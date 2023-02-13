@@ -1,6 +1,9 @@
+#include <bits/stdc++.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+using namespace std;
 
 typedef struct Process
 {
@@ -51,12 +54,13 @@ int compareProcesses(const void* a, const void* b)
 int main()
 {
     int n, quantum;
-    printf("Enter the number of processes: ");
-    scanf("%d", &n);
-    printf("Enter the time quantum: ");
-    scanf("%d", &quantum);
+    cout<<"Enter the number of processes: ";
+    cin>>n;
+    cout<<"Enter the time quantum: ";
+    cin>>quantum;
     Process processes[20];
-    printf("Enter the burst time and arrival time of each process: \n");
+
+    cout<<"Enter the burst time and arrival time of each process: "<<endl;
     for (int i = 0; i < n; i++)
     {
         processes[i].id = i + 1;
@@ -68,13 +72,13 @@ int main()
     qsort(processes, n, sizeof(Process), compareProcesses);
 
     calculateWaitingTime(processes, n, quantum);
-    printf("Process\tBurst Time\tArrival Time\tWaiting Time\tTurnaround Time\n");
+    cout<<"Process\tBurst Time\tArrival Time\tWaiting Time\tTurnaround Time"<<endl;
     int totalWaitingTime = 0;
     int totalTurnAroundTime = 0;
     for (int i = 0; i < n; i++)
     {
         totalWaitingTime += processes[i].waitingTime;
         totalTurnAroundTime += processes[i].turnAroundTime;
-        printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\n", processes[i].id, processes[i].burstTime, processes[i].arrivalTime, processes[i].waitingTime, processes[i].turnAroundTime);
+        cout<<processes[i].id<<"\t\t"<<processes[i].burstTime<<"\t\t"<<processes[i].arrivalTime<<"\t\t"<<processes[i].waitingTime<<"\t\t"<<processes[i].turnAroundTime<<endl;
     }
 }
