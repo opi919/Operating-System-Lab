@@ -101,7 +101,7 @@ int main()
         cout << "Safe Sequence is: ";
         for (int i = 0; i < proc; i++)
         {
-            cout << "P" << safe[i] << " ";
+            i == proc -1 ? cout << "P" << safe[i] << endl : cout << "P" << safe[i] << " -> ";
         }
         cout << endl;
     }
